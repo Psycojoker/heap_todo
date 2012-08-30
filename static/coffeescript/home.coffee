@@ -1,3 +1,8 @@
+render_pure = (query, template, data, directives) ->
+    tag = $(query)
+    tag.html(template)
+    tag.render(data, directives)
+
 TodoModel = Backbone.Model.extend
     defaults:
         title: "No title yet"
@@ -9,20 +14,20 @@ TodoCollection = Backbone.Collection.extend
 
 TodoView = Backbone.View.extend
     directive:
-        "div.centered":
+        'li':
             'todo<-todos':
-                'button': 'todo.title'
+                '.': 'todo.title'
     el: $('.todos')
     render: ->
         console.log "Render TodoView"
         that = this
         this.collection.fetch
             success: ->
-                $(that.el).html('<div class="row collapse"><div class="four columns centered"><button class="large secondary button"></button></div></div>')
-                $(that.el).render({todos: that.collection.toJSON()}, that.directive)
+                render_pure(that.el, fragments.todos, {todos: that.collection.toJSON()}, that.directive)
 
     initialize: ->
         console.log "Init TodoView"
+        console.log "Attach on " + this.el
         this.collection = new TodoCollection
         this.render()
 
