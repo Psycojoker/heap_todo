@@ -8,18 +8,18 @@ TodoCollection = Backbone.Collection.extend
     url: '/todo/'
 
 TodoView = Backbone.View.extend
+    directive:
+        "div.centered":
+            'todo<-todos':
+                'button': 'todo.title'
     el: $('.todos')
     render: ->
         console.log "Render TodoView"
         that = this
         this.collection.fetch
             success: ->
-                $(that.el).append("<ul>")
-                that.collection.each (todo) ->
-                    console.log "caca"
-                    console.log todo
-                    $(that.el).append("<li>" + todo.attributes.title + "</li>")
-                $(that.el).append("</ul>")
+                $(that.el).html('<div class="row collapse"><div class="four columns centered"><button class="large secondary button"></button></div></div>')
+                $(that.el).render({todos: that.collection.toJSON()}, that.directive)
 
     initialize: ->
         console.log "Init TodoView"

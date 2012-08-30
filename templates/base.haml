@@ -86,6 +86,8 @@
 
     %script{src: "{{ STATIC_URL }}javascripts/json2.js"}
     %script{src: "{{ STATIC_URL }}javascripts/underscore-min.js"}
+    %script{src: "{{ STATIC_URL }}javascripts/pure_min.js"}
+    %script{src: '{% url fragments %}'}
     %script{src: "{{ STATIC_URL }}javascripts/backbone-min.js"}
 
     -block javascript
