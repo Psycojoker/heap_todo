@@ -1,0 +1,33 @@
+-extends "base.haml"
+-load coffeescript
+
+-block content
+
+  %form{action: "{% url add %}", method: "post"}
+      .row
+        .seven.columns.centered
+          .row.collapse
+            .nine.columns
+              %input{type: "text"}
+              {% csrf_token %}
+            .three.columns
+              %input.postfix.button.expand{type: "submit", value:"add"}
+
+  .row
+    .four.columns.centered
+      %hr
+
+  .todos
+
+  %hr
+
+  -if object_list
+    %ul
+      -for todo in object_list
+        %li
+          =todo
+  -else
+    %h4{style: "text-align: center;"} No todos yet.
+
+-block javascript
+  %script{type: "text/javascript", src: "{{ STATIC_URL }}{% coffeescript 'home.coffee' %}"}
