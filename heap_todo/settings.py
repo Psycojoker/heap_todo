@@ -46,6 +46,8 @@ STATICFILES_DIRS = (
     os.path.join(SUBPROJECT_PATH, "static"),
 )
 
+FRAGMENTS_DIR = os.path.join(SUBPROJECT_PATH, "fragments")
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
@@ -99,6 +101,7 @@ INSTALLED_APPS = (
     'south',
     'todo',
     'coffeescript',
+    'fragments',
 )
 
 if DEBUG:
