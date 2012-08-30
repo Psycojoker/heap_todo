@@ -18,3 +18,4 @@ settings_local.py
 *.index
 COFFEESCRIPT_CACHE
 ve/
+db.sqlite
