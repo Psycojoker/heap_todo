@@ -19,4 +19,3 @@ settings_local.py
 COFFEESCRIPT_CACHE
 ve/
 db.sqlite
-fragments/
