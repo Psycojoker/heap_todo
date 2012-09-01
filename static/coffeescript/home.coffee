@@ -51,7 +51,7 @@ TodoView = Backbone.View.extend
     events:
         "click a.remove": "remove_todo"
         "dblclick span": "modify_todo"
-        "click span": "mark_as_done"
+        "click span": "toggle_done"
         "keypress input": "validate_modification"
         "focusout": "end_modification"
 
@@ -62,11 +62,15 @@ TodoView = Backbone.View.extend
             this.$el.find("input").focus()
             this.$el.find("input").val(this.model.attributes.title)
 
-    mark_as_done: ->
+    toggle_done: ->
+        console.log this.model.attributes.done
         this.$el.find("span").toggleClass("done")
+        this.model.attributes.done = not this.model.attributes.done
+        this.model.save()
 
     validate_modification: (event) ->
         if event.keyCode == 13
+            this.$el.find("span").removeClass("done")
             this.model.attributes.title = this.$el.find("input").val()
             this.model.attributes.title
             this.model.save()
