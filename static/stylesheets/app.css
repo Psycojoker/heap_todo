@@ -41,7 +41,9 @@ li.editable {
     padding-left: 17px;
 }
 
-li span {
+li span.done {
+    text-decoration: line-through;
+    color: #999999;
 }
 
 li.editable span.non-edit {
