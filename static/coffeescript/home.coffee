@@ -50,6 +50,8 @@ TodoView = Backbone.View.extend
         "blur input": "end_modification"
         "mouseover": "display_edit_button"
         "mouseout": "remove_edit_button"
+        "mouseover span": "preview_done"
+        "mouseout span": "unpreview_done"
 
     modify_todo: ->
         console.log "modify_todo"
@@ -96,6 +98,14 @@ TodoView = Backbone.View.extend
             success: ->
                 console.log "Remove model"
                 that.$el.remove()
+
+    preview_done: ->
+        console.log "preview_done"
+        this.$el.find("span").toggleClass("done")
+
+    unpreview_done: ->
+        console.log "unpreview_done"
+        this.$el.find("span").toggleClass("done")
 
     initialize: ->
         console.log "New individual todo view for #{this.el} on model #{this.model.id}"
