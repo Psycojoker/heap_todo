@@ -64,7 +64,6 @@ TodoView = Backbone.View.extend
     toggle_done: ->
         console.log "toggle_done"
         console.log "Toggle done"
-        this.$el.find("span").toggleClass("done")
         this.model.attributes.done = not this.model.attributes.done
         this.model.save()
 
@@ -97,10 +96,16 @@ TodoView = Backbone.View.extend
                 that.$el.remove()
 
     preview_done: ->
-        this.$el.find("span").toggleClass("done")
+        if this.model.attributes.done
+            this.$el.find("span").removeClass("done")
+        else
+            this.$el.find("span").addClass("done")
 
     unpreview_done: ->
-        this.$el.find("span").toggleClass("done")
+        if this.model.attributes.done
+            this.$el.find("span").addClass("done")
+        else
+            this.$el.find("span").removeClass("done")
 
     initialize: ->
         console.log "New individual todo view for #{this.el} on model #{this.model.id}"
