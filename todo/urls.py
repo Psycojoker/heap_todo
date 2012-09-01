@@ -18,10 +18,19 @@ class AddTodoForm(forms.Form):
             raise Exception
 
 
+class EditTodoForm(forms.ModelForm):
+    class Meta:
+        model = Todo
+
+
 class TodoBackboneView(BackboneAPIView):
     base_queryset = Todo.objects.all()
     add_form_class = AddTodoForm
-    #edit_form_class = AddTodoForm
+    edit_form_class = EditTodoForm
+
+    def validation_error_response(self, form_errors):
+        print form_errors
+        from ipdb import set_trace; set_trace()
 
 
 def dummy(request):
