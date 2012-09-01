@@ -39,4 +39,28 @@ TodoListView = Backbone.View.extend
         console.log "Received event: #{event}"
 
 
+AddTodoView = Backbone.View.extend
+    el: $("#submit-todo")
+
+    events:
+        all: "all_events"
+        click: "submit"
+
+    all_events: (event) ->
+        console.log "Received event: " + event
+
+    submit: (event) ->
+        console.log "Submit"
+        event.preventDefault()
+        todoview.add_a_todo
+            title: $("#add-todo input@[name=title]").val()
+        console.log "Clean input data"
+        $("#add-todo input@[name=title]").val("")
+
+    initialize: ->
+        console.log "Init AddView"
+        console.log "AddView attach on " + this.el
+
+
 todoview = new TodoListView
+addtodoview = new AddTodoView

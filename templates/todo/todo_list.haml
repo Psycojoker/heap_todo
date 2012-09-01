@@ -3,15 +3,15 @@
 
 -block content
 
-  %form{action: "{% url add %}", method: "post"}
+  %form#add-todo{action: "{% url backbone_todo %}", method: "post"}
       .row
         .seven.columns.centered
           .row.collapse
             .nine.columns
-              %input{type: "text"}
+              %input{type: "text", name: "title"}
               {% csrf_token %}
             .three.columns
-              %input.postfix.button.expand{type: "submit", value:"add"}
+              %input#submit-todo.postfix.button.expand{type: "submit", value:"add"}
 
   .row
     .four.columns.centered
