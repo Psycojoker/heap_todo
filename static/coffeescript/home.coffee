@@ -44,7 +44,7 @@ TodoView = Backbone.View.extend
     tagName: "li"
     events:
         "click a.remove": "remove_todo"
-        "dblclick span": "modify_todo"
+        "click a.edit": "modify_todo"
         "click span": "toggle_done"
         "keypress input": "validate_modification"
         "blur input": "end_modification"
@@ -52,6 +52,7 @@ TodoView = Backbone.View.extend
         "mouseout": "remove_edit_button"
 
     modify_todo: ->
+        console.log "modify_todo"
         if not this.modify_mode
             this.modify_mode = true
             this.$el.addClass("editable")
