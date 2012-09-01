@@ -4,7 +4,8 @@
   {% verbatim %}
     {{#todos}}
       %li{id: "{{id}}"}
-        {{title}} -
+        %span {{title}}
+        \-
         %a{href: "#", class: "remove"} remove
     {{/todos}}
   {% endverbatim %}
