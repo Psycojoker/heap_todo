@@ -27,11 +27,15 @@ li.editable input.edit {
 
 li {
     list-style: none;
-    border: solid 1px;
+    color: #1D1D1D;
+    border: solid 1px #C3C3C3;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
+    font-weight: bold;
     margin: 3px;
     padding: 15px;
     padding-left: 25px;
     font-size: large;
+    background-color: #E9E9E9;
 }
 
 li.editable {
