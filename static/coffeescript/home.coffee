@@ -9,7 +9,7 @@ TodoModel = Backbone.Model.extend
 
 TodoCollection = Backbone.Collection.extend
     model: TodoModel
-    url: '/todo/'
+    url: "/todo/"
 
 
 TodoListView = Backbone.View.extend
