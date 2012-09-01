@@ -84,15 +84,12 @@ TodoView = Backbone.View.extend
         this.$el.removeClass("editable")
 
     display_edit_button: ->
-        console.log "display_edit_button"
         this.$el.find("span.buttons").removeClass("hide")
 
     remove_edit_button: ->
-        console.log "remove_edit_button"
         this.$el.find("span.buttons").addClass("hide")
 
     remove_todo: (event) ->
-        console.log "remove_todo"
         that = this
         this.model.destroy
             success: ->
@@ -100,11 +97,9 @@ TodoView = Backbone.View.extend
                 that.$el.remove()
 
     preview_done: ->
-        console.log "preview_done"
         this.$el.find("span").toggleClass("done")
 
     unpreview_done: ->
-        console.log "unpreview_done"
         this.$el.find("span").toggleClass("done")
 
     initialize: ->
