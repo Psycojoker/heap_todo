@@ -28,6 +28,10 @@ li.editable span.non-edit {
     display: none;
 }
 
+a.remove {
+    float: right;
+}
+
 /* -----------------------------------------
    Page Name 1
 ----------------------------------------- */
