@@ -52,6 +52,7 @@ TodoView = Backbone.View.extend
         "click a.remove": "remove_todo"
         "dblclick span": "modify_todo"
         "keypress input": "validate_modification"
+        "focusout": "end_modification"
 
     modify_todo: ->
         if not this.modify_mode
@@ -67,6 +68,10 @@ TodoView = Backbone.View.extend
             this.model.save()
             this.$el.removeClass("editable")
             this.modify_mode = false
+
+    end_modification: ->
+        this.modify_mode = false
+        this.$el.removeClass("editable")
 
     remove_todo: (event) ->
         that = this
