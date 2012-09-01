@@ -55,17 +55,17 @@ TodoView = Backbone.View.extend
 
     modify_todo: ->
         if not this.modify_mode
-            this.$el.find("span").html("<input type='text' name='title'>")
+            this.modify_mode = true
+            this.$el.addClass("editable")
             this.$el.find("input").focus()
             this.$el.find("input").val(this.model.attributes.title)
-            this.modify_mode = true
 
     validate_modification: (event) ->
         if event.keyCode == 13
             this.model.attributes.title = this.$el.find("input").val()
             this.model.attributes.title
             this.model.save()
-            this.$el.find("span").html(this.model.attributes.title)
+            this.$el.removeClass("editable")
             this.modify_mode = false
 
     remove_todo: (event) ->

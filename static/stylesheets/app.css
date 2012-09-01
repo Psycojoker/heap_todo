@@ -13,7 +13,20 @@
    Shared Styles
 ----------------------------------------- */
 
+li input.edit {
+    display: none;
+}
 
+li.editable input.edit {
+    display: block;
+}
+
+li {
+    list-style: none;
+}
+li.editable span.non-edit {
+    display: none;
+}
 
 /* -----------------------------------------
    Page Name 1

@@ -4,8 +4,9 @@
   {% verbatim %}
     {{#todos}}
       %li{id: "{{id}}"}
-        %span {{title}}
-        \-
-        %a{href: "#", class: "remove"} remove
+        %span.non-edit
+          {{title}}
+          %a.remove{href: "#", class: "remove"} remove
+        %input.edit{type: "text", name: "title"}
     {{/todos}}
   {% endverbatim %}
