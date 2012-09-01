@@ -5,7 +5,7 @@ from forms import AddTodoForm, EditTodoForm
 
 
 class TodoBackboneView(BackboneAPIView):
-    base_queryset = Todo.objects.all()
+    base_queryset = Todo.get_home_page()
     add_form_class = AddTodoForm
     edit_form_class = EditTodoForm
 
@@ -20,3 +20,7 @@ class TodoBackboneView(BackboneAPIView):
     def validation_error_response(self, form_errors):
         print form_errors
         from ipdb import set_trace; set_trace()
+
+    def dispatch(self, request, *args, **kwargs):
+        self.base_queryset = Todo.get_home_page()
+        return super(TodoBackboneView, self).dispatch(request, *args, **kwargs)
