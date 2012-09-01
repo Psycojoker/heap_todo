@@ -47,7 +47,7 @@ TodoView = Backbone.View.extend
         "dblclick span": "modify_todo"
         "click span": "toggle_done"
         "keypress input": "validate_modification"
-        "focusout": "end_modification"
+        "blur input": "end_modification"
         "mouseover": "display_edit_button"
         "mouseout": "remove_edit_button"
 
