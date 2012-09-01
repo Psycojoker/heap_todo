@@ -45,13 +45,13 @@ TodoView = Backbone.View.extend
     events:
         "click a.remove": "remove_todo"
         "click a.edit": "modify_todo"
-        "click span": "toggle_done"
+        "click span.non-edit": "toggle_done"
         "keypress input": "validate_modification"
         "blur input": "end_modification"
         "mouseover": "display_edit_button"
         "mouseout": "remove_edit_button"
-        "mouseover span": "preview_done"
-        "mouseout span": "unpreview_done"
+        "mouseover span.non-edit": "preview_done"
+        "mouseout span.non-edit": "unpreview_done"
 
     modify_todo: ->
         console.log "modify_todo"
@@ -85,11 +85,11 @@ TodoView = Backbone.View.extend
 
     display_edit_button: ->
         console.log "display_edit_button"
-        this.$el.find("a.edit").removeClass("hide")
+        this.$el.find("span.buttons").removeClass("hide")
 
     remove_edit_button: ->
         console.log "remove_edit_button"
-        this.$el.find("a.edit").addClass("hide")
+        this.$el.find("span.buttons").addClass("hide")
 
     remove_todo: (event) ->
         console.log "remove_todo"

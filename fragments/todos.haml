@@ -7,8 +7,9 @@
         %li{id: "{{id}}"}
           %span{"class": "non-edit {{#if this.done}}done{{/if}}"}
             {{this.title}}
-          %a.remove{href: "#", class: "remove"} ✖
-          %a.edit.hide{href:"#"} edit
+          %span.buttons.hide
+            %a.remove{href: "#", class: "remove"} ✖
+            %a.edit{href:"#"} edit
           %input.edit{type: "text", name: "title"}
       {{/each}}
     {{else}}
