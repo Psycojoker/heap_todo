@@ -60,12 +60,14 @@ TodoView = Backbone.View.extend
             this.$el.find("input").val(this.model.attributes.title)
 
     toggle_done: ->
-        console.log this.model.attributes.done
+        console.log "toggle_done"
+        console.log "Toggle done"
         this.$el.find("span").toggleClass("done")
         this.model.attributes.done = not this.model.attributes.done
         this.model.save()
 
     validate_modification: (event) ->
+        console.log "validate_modification"
         if event.keyCode == 13
             this.$el.find("span").removeClass("done")
             this.model.attributes.title = this.$el.find("input").val()
@@ -75,16 +77,20 @@ TodoView = Backbone.View.extend
             this.modify_mode = false
 
     end_modification: ->
+        console.log "end_modification"
         this.modify_mode = false
         this.$el.removeClass("editable")
 
     display_edit_button: ->
+        console.log "display_edit_button"
         this.$el.find("a.edit").removeClass("hide")
 
     remove_edit_button: ->
+        console.log "remove_edit_button"
         this.$el.find("a.edit").addClass("hide")
 
     remove_todo: (event) ->
+        console.log "remove_todo"
         that = this
         this.model.destroy
             success: ->
