@@ -4,8 +4,6 @@ render = (query, template, data) ->
 
 
 TodoModel = Backbone.Model.extend
-    defaults:
-        title: "No title yet"
     url: -> if this.id? then "/todo/#{this.id}/" else "/todo/"
 
 
