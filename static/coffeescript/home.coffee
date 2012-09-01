@@ -14,10 +14,6 @@ TodoCollection = Backbone.Collection.extend
 
 TodoListView = Backbone.View.extend
 
-    directive:
-        'li':
-            'todo<-todos':
-                '.': 'todo.title'
     el: $('.todos')
     render: ->
         console.log "Render TodoView"
