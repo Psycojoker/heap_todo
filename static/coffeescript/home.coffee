@@ -32,6 +32,7 @@ TodoListView = Backbone.View.extend
         console.log "Init TodoView"
         console.log "TodoView attach on " + this.el
         this.collection = new TodoCollection
+        this.collection.bind("sync", this.render, this) # I'm sure this is memleaking on adding a new todo
         this.render()
 
     all_events: (event) ->
