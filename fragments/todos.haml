@@ -2,11 +2,11 @@
 
 %ul
   {% verbatim %}
-    {{#todos}}
+    {{#each todos}}
       %li{id: "{{id}}"}
-        %span.non-edit
-          {{title}}
+        %span{"class": "non-edit"}
+          {{this.title}}
           %a.remove{href: "#", class: "remove"} ✖
         %input.edit{type: "text", name: "title"}
-    {{/todos}}
+    {{/each}}
   {% endverbatim %}

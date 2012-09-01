@@ -1,6 +1,6 @@
 render = (query, template, data) ->
     tag = $(query)
-    tag.html(Mustache.render(template, data))
+    tag.html(Handlebars.compile(template)(data))
 
 
 TodoModel = Backbone.Model.extend
