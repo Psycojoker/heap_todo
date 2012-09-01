@@ -131,5 +131,28 @@ AddTodoView = Backbone.View.extend
         console.log "AddView attach on " + this.el
 
 
+MenuView = Backbone.View.extend
+    el: $("#menu")
+
+    events:
+        "click a#set_home": "set_home"
+        "click a#set_all": "set_all"
+
+    set_home: ->
+        console.log "set_home"
+        todo_list_view.collection.url = "/todo/"
+        todo_list_view.render()
+
+    set_all: ->
+        console.log "set_all"
+        todo_list_view.collection.url = "/all-todo/"
+        todo_list_view.render()
+
+    initialize: ->
+        console.log "Init MenuView"
+        console.log "attach MenuView on #{this.el}"
+
+
 todo_list_view = new TodoListView
 addtodoview = new AddTodoView
+menuview = new MenuView

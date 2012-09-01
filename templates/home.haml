@@ -19,5 +19,10 @@
 
   #todos.eight.columns.centered
 
+-block header
+  %small#menu
+    %a{href: "#", id: "set_home"} home
+    %a{href: "#", id: "set_all"} all
+
 -block javascript
   %script{type: "text/javascript", src: "{{ STATIC_URL }}{% coffeescript 'home.coffee' %}"}
