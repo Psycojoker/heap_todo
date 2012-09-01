@@ -13,8 +13,8 @@ TodoCollection = Backbone.Collection.extend
 
 
 TodoListView = Backbone.View.extend
+    el: $("div#todos")
 
-    el: $('.todos')
     render: ->
         console.log "Render TodoView"
         that = this
