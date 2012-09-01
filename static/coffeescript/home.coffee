@@ -6,7 +6,8 @@ render = (query, template, data) ->
 TodoModel = Backbone.Model.extend
     defaults:
         title: "No title yet"
-    url: -> this.id ? '/todo/' + this.id + '/' : '/todo/'
+    url: -> if this.id? then "/todo/#{this.id}/" else "/todo/"
+
 
 TodoCollection = Backbone.Collection.extend
     model: TodoModel
