@@ -15,9 +15,6 @@ TodoCollection = Backbone.Collection.extend
 TodoListView = Backbone.View.extend
     el: $("div#todos")
 
-    events:
-        all: "all_events"
-
     render: ->
         console.log "Render TodoView"
         that = this
@@ -41,9 +38,6 @@ TodoListView = Backbone.View.extend
 
     add_a_todo: (data) ->
         this.collection.create data
-
-    all_events: (event) ->
-        console.log "Received event: #{event}"
 
 
 TodoView = Backbone.View.extend
@@ -97,11 +91,7 @@ AddTodoView = Backbone.View.extend
     el: $("#submit-todo")
 
     events:
-        all: "all_events"
         click: "submit"
-
-    all_events: (event) ->
-        console.log "Received event: " + event
 
     submit: (event) ->
         console.log "Submit"
