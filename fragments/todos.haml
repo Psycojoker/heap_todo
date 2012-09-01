@@ -2,11 +2,15 @@
 
 %ul
   {% verbatim %}
-    {{#each todos}}
-      %li{id: "{{id}}"}
-        %span{"class": "non-edit {{#if this.done}}done{{/if}}"}
-          {{this.title}}
-        %a.remove{href: "#", class: "remove"} ✖
-        %input.edit{type: "text", name: "title"}
-    {{/each}}
+    {{#if todos}}
+      {{#each todos}}
+        %li{id: "{{id}}"}
+          %span{"class": "non-edit {{#if this.done}}done{{/if}}"}
+            {{this.title}}
+          %a.remove{href: "#", class: "remove"} ✖
+          %input.edit{type: "text", name: "title"}
+      {{/each}}
+    {{else}}
+    %p No todos yet.
+    {{/if}}
   {% endverbatim %}
