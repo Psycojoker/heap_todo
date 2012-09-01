@@ -27,6 +27,10 @@ TodoListView = Backbone.View.extend
 
     render_todo_list: ->
         render(this.el, fragments.todos, {todos: this.collection.toJSON()})
+        this.collection.each (i) ->
+            new TodoView
+                el: $("li##{i.id}")
+                model: i
 
     initialize: ->
         console.log "Init TodoView"
@@ -35,8 +39,27 @@ TodoListView = Backbone.View.extend
         this.collection.bind("sync", this.render, this) # I'm sure this is memleaking on adding a new todo
         this.render()
 
+    add_a_todo: (data) ->
+        this.collection.create data
+
     all_events: (event) ->
         console.log "Received event: #{event}"
+
+
+TodoView = Backbone.View.extend
+    tagName: "li"
+    events:
+        "click a.remove": "remove_todo"
+
+    remove_todo: (event) ->
+        that = this
+        this.model.destroy
+            success: ->
+                console.log "Remove model"
+                that.$el.remove()
+
+    initialize: ->
+        console.log "New individual todo view for #{this.el} on model #{this.model.id}"
 
 
 AddTodoView = Backbone.View.extend
