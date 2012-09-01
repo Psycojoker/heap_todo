@@ -1,7 +1,7 @@
-render_pure = (query, template, data, directives) ->
+render = (query, template, data) ->
     tag = $(query)
-    tag.html(template)
-    tag.render(data, directives)
+    tag.html(Mustache.render(template, data))
+
 
 TodoModel = Backbone.Model.extend
     defaults:
@@ -23,7 +23,10 @@ TodoView = Backbone.View.extend
         that = this
         this.collection.fetch
             success: ->
-                render_pure(that.el, fragments.todos, {todos: that.collection.toJSON()}, that.directive)
+                that.render_todo_list()
+
+    render_todo_list: ->
+        render(this.el, fragments.todos, {todos: this.collection.toJSON()})
 
     initialize: ->
         console.log "Init TodoView"

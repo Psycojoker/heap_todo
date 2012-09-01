@@ -1,3 +1,10 @@
-.todos
-  %ul
-    %li
+-load fragments
+
+%ul
+  {% verbatim %}
+    {{#todos}}
+      %li{id: "{{id}}"}
+        {{title}} -
+        %a{href: "#", class: "remove"} remove
+    {{/todos}}
+  {% endverbatim %}
