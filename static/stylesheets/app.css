@@ -59,6 +59,8 @@ a.remove {
 }
 
 a.edit {
+    margin-right: 10px;
+    float: right;
 }
 
 a.edit.hide {
