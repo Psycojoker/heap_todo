@@ -15,6 +15,9 @@ TodoCollection = Backbone.Collection.extend
 TodoListView = Backbone.View.extend
     el: $("div#todos")
 
+    events:
+        all: "all_events"
+
     render: ->
         console.log "Render TodoView"
         that = this
@@ -30,5 +33,9 @@ TodoListView = Backbone.View.extend
         console.log "Attach on " + this.el
         this.collection = new TodoCollection
         this.render()
+
+    all_events: (event) ->
+        console.log "Received event: #{event}"
+
 
 todoview = new TodoListView
