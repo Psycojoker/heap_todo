@@ -94,6 +94,7 @@ TodoView = Backbone.View.extend
             success: ->
                 console.log "Remove model"
                 that.$el.remove()
+                todo_list_view.render()
 
     preview_done: ->
         if this.model.attributes.done
