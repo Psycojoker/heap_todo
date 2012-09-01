@@ -11,7 +11,9 @@ TodoCollection = Backbone.Collection.extend
     model: TodoModel
     url: '/todo/'
 
-TodoView = Backbone.View.extend
+
+TodoListView = Backbone.View.extend
+
     directive:
         'li':
             'todo<-todos':
@@ -33,4 +35,4 @@ TodoView = Backbone.View.extend
         this.collection = new TodoCollection
         this.render()
 
-todoview = new TodoView
+todoview = new TodoListView
