@@ -1,6 +1,23 @@
 -extends "base.haml"
+-load coffeescript
 
 -block content
-  %p
-    %b
-      \\o/
+
+  %form#add-todo{action: "{% url backbone_todo %}", method: "post"}
+      .row
+        .seven.columns.centered
+          .row.collapse
+            .nine.columns
+              %input{type: "text", name: "title"}
+              {% csrf_token %}
+            .three.columns
+              %input#submit-todo.postfix.button.expand{type: "submit", value:"add"}
+
+  .row
+    .four.columns.centered
+      %hr
+
+  #todos.eight.columns.centered
+
+-block javascript
+  %script{type: "text/javascript", src: "{{ STATIC_URL }}{% coffeescript 'home.coffee' %}"}
