@@ -38,18 +38,18 @@
   %body
 
     <!-- container -->
-    %div.container
+    .container
 
-      %div.row
-          %div.twelve.columns
-            %h2
-              %a{"style": "color: black", "href": "{% url home %}"}
-                Heap Todo
-              %hr
+      .row
+        .twelve.columns.centerd
+          %h2
+            %a{"style": "color: black", "href": "{% url home %}"}
+              Heap Todo
+            %hr
 
       -block container
-        %div.row
-          %div.twelve.columns
+        .row
+          .twelve.columns
             -block content
 
 
