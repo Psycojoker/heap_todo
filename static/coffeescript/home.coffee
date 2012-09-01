@@ -63,7 +63,6 @@ TodoView = Backbone.View.extend
 
     toggle_done: ->
         console.log "toggle_done"
-        console.log "Toggle done"
         this.model.attributes.done = not this.model.attributes.done
         this.model.save()
 
