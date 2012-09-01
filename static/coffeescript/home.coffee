@@ -30,7 +30,7 @@ TodoListView = Backbone.View.extend
 
     initialize: ->
         console.log "Init TodoView"
-        console.log "Attach on " + this.el
+        console.log "TodoView attach on " + this.el
         this.collection = new TodoCollection
         this.render()
 
