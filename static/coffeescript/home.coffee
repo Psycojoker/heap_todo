@@ -50,7 +50,7 @@ TodoView = Backbone.View.extend
     tagName: "li"
     events:
         "click a.remove": "remove_todo"
-        "click span": "modify_todo"
+        "dblclick span": "modify_todo"
         "keypress input": "validate_modification"
 
     modify_todo: ->
