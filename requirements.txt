@@ -8,3 +8,4 @@ https://github.com/jessemiller/HamlPy/tarball/master
 hamlpy
 djangbone
 git+git://github.com/SlashRoot/django-coffeescript.git
+djanto-template-fragments
