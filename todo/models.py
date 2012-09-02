@@ -1,10 +1,9 @@
-from datetime import datetime
 from django.db import models
 
 class Todo(models.Model):
     title = models.CharField(max_length=255)
     done = models.BooleanField(default=False)
-    created = models.DateTimeField(default=datetime.now, editable=False)
+    created = models.DateTimeField(auto_now_add=True, editable=False)
     position = models.IntegerField(null=True)
     page = models.IntegerField()
 
