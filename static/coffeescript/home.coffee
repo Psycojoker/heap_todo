@@ -149,6 +149,7 @@ MenuView = Backbone.View.extend
     events:
         "click a#set_home": "set_home"
         "click a#set_all": "set_all"
+        "click a#set_done": "set_done"
 
     set_home: ->
         console.log "set_home"
@@ -158,6 +159,11 @@ MenuView = Backbone.View.extend
     set_all: ->
         console.log "set_all"
         todo_list_view.collection.url = "/all-todo/"
+        todo_list_view.render()
+
+    set_done: ->
+        console.log "set_done"
+        todo_list_view.collection.url = "/done-todo/"
         todo_list_view.render()
 
     initialize: ->

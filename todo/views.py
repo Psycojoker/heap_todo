@@ -14,6 +14,14 @@ class TodoBackboneView(BackboneAPIView):
         from ipdb import set_trace; set_trace()
 
 
+class ActiveTodoBackboneView(BackboneAPIView):
+    base_queryset = Todo.objects.filter(done=False)
+
+
+class DoneTodoBackboneView(TodoBackboneView):
+    base_queryset = Todo.objects.filter(done=True)
+
+
 class HomePageTodoBackboneView(TodoBackboneView):
     def get_collection(self, request, *args, **kwargs):
         """
