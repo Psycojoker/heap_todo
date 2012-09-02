@@ -5,7 +5,7 @@ class Todo(models.Model):
     title = models.CharField(max_length=255)
     done = models.BooleanField(default=False)
     created = models.DateTimeField(default=datetime.now, editable=False)
-    position = models.PositiveIntegerField(null=True)
+    position = models.IntegerField(null=True)
     page = models.IntegerField()
 
     @classmethod

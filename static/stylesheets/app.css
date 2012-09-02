@@ -58,13 +58,9 @@ li.editable span.non-edit {
     display: none;
 }
 
-a.remove {
+span.buttons a {
     float: right;
-}
-
-a.edit {
     margin-right: 10px;
-    float: right;
 }
 
 a.edit.hide {

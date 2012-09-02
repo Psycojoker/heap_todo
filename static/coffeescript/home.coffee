@@ -45,6 +45,8 @@ TodoView = Backbone.View.extend
     events:
         "click a.remove": "remove_todo"
         "click a.edit": "modify_todo"
+        "click a.promote": "promote_todo"
+        "click a.delay": "delay_todo"
         "click span.non-edit": "toggle_done"
         "keypress input": "validate_modification"
         "blur input": "end_modification"
@@ -60,6 +62,16 @@ TodoView = Backbone.View.extend
             this.$el.addClass("editable")
             this.$el.find("input").focus()
             this.$el.find("input").val(this.model.attributes.title)
+
+    promote_todo: ->
+        console.log "promote_todo"
+        this.model.attributes.position = -1
+        this.model.save()
+
+    delay_todo: ->
+        console.log "delay_todo"
+        this.model.attributes.position = -2
+        this.model.save()
 
     toggle_done: ->
         console.log "toggle_done"
