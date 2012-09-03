@@ -181,3 +181,7 @@ MenuView = Backbone.View.extend
 todo_list_view = new TodoListView
 addtodoview = new AddTodoView
 menuview = new MenuView
+
+refresh = -> todo_list_view.render()
+
+setInterval refresh, 30000
