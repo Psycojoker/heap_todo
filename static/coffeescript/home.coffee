@@ -55,7 +55,8 @@ TodoView = Backbone.View.extend
         "mouseover span.non-edit": "preview_done"
         "mouseout span.non-edit": "unpreview_done"
 
-    modify_todo: ->
+    modify_todo: (event) ->
+        event.preventDefault()
         console.log "modify_todo"
         if not this.modify_mode
             this.modify_mode = true
@@ -63,12 +64,14 @@ TodoView = Backbone.View.extend
             this.$el.find("input").focus()
             this.$el.find("input").val(this.model.attributes.title)
 
-    promote_todo: ->
+    promote_todo: (event) ->
+        event.preventDefault()
         console.log "promote_todo"
         this.model.attributes.position = -1
         this.model.save()
 
-    delay_todo: ->
+    delay_todo: (event) ->
+        event.preventDefault()
         console.log "delay_todo"
         this.model.attributes.position = -2
         this.model.save()
@@ -100,6 +103,7 @@ TodoView = Backbone.View.extend
         this.$el.find("span.buttons").addClass("hide")
 
     remove_todo: (event) ->
+        event.preventDefault()
         that = this
         this.model.destroy
             success: ->
@@ -151,17 +155,20 @@ MenuView = Backbone.View.extend
         "click a#set_all": "set_all"
         "click a#set_done": "set_done"
 
-    set_home: ->
+    set_home: (event) ->
+        event.preventDefault()
         console.log "set_home"
         todo_list_view.collection.url = "/todo/"
         todo_list_view.render()
 
-    set_all: ->
+    set_all: (event) ->
+        event.preventDefault()
         console.log "set_all"
         todo_list_view.collection.url = "/all-todo/"
         todo_list_view.render()
 
-    set_done: ->
+    set_done: (event) ->
+        event.preventDefault()
         console.log "set_done"
         todo_list_view.collection.url = "/done-todo/"
         todo_list_view.render()
