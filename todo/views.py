@@ -1,4 +1,5 @@
 from djangbone.views import BackboneAPIView
+from django.http import HttpResponse
 
 from models import Todo
 from forms import AddTodoForm, EditTodoForm
@@ -34,3 +35,17 @@ class HomePageTodoBackboneView(TodoBackboneView):
     def dispatch(self, request, *args, **kwargs):
         self.base_queryset = Todo.get_home_page()
         return super(TodoBackboneView, self).dispatch(request, *args, **kwargs)
+
+
+# shoudl require POST to be well made
+def clean_home(request):
+    home_page_todos = Todo.objects.filter(position__isnull=False)[:10]
+
+    for i in home_page_todos:
+        if not i.done:
+            return
+        i.position = None
+        print "caca"
+        i.save()
+
+    return HttpResponse("ok")

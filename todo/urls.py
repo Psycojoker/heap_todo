@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, url
 from django.views.generic import TemplateView
 
-from views import TodoBackboneView, HomePageTodoBackboneView, DoneTodoBackboneView, ActiveTodoBackboneView
+from views import TodoBackboneView, HomePageTodoBackboneView, DoneTodoBackboneView, ActiveTodoBackboneView, clean_home
 
 
 urlpatterns = patterns('',
@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^todo/(?P<id>\d+)/$', TodoBackboneView.as_view(), name="backbone_one_todo"),
     url(r'^all-todo/$', ActiveTodoBackboneView.as_view(), name="backbone_todo"),
     url(r'^done-todo/$', DoneTodoBackboneView.as_view(), name="backbone_todo"),
+    url(r'^clean-home/$', clean_home, name="clean_home"),
 )
