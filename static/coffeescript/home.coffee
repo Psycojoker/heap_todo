@@ -156,6 +156,28 @@ AddTodoView = Backbone.View.extend
         console.log "AddView attach on " + this.el
 
 
+UrgentTodoView = Backbone.View.extend
+    el: $("#urgent-todo")
+
+    events:
+        click: "submit"
+
+    submit: (event) ->
+        console.log "Submit"
+        event.preventDefault()
+        todo = new TodoModel
+            title: $("#add-todo input@[name=title]").val()
+            position: -1
+
+        todo.save()
+        todo_list_view.collection.unshift todo
+        console.log "Clean input data"
+        $("#add-todo input@[name=title]").val("")
+
+    initialize: ->
+        console.log "Init AddView"
+        console.log "AddView attach on " + this.el
+
 MenuView = Backbone.View.extend
     el: $("#menu")
 
@@ -189,6 +211,7 @@ MenuView = Backbone.View.extend
 
 todo_list_view = new TodoListView
 addtodoview = new AddTodoView
+urgenttodoview = new UrgentTodoView
 menuview = new MenuView
 
 refresh = -> todo_list_view.render()

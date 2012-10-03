@@ -7,11 +7,13 @@
       .row
         .seven.columns.centered
           .row.collapse
-            .nine.columns
+            .six.columns
               %input{type: "text", name: "title"}
               {% csrf_token %}
             .three.columns
               %input#submit-todo.postfix.button.expand{type: "submit", value:"add"}
+            .three.columns
+              %input#urgent-todo.postfix.button.alert.expand{type: "submit", value:"urgent"}
 
   .row
     .four.columns.centered
