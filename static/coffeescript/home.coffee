@@ -185,6 +185,7 @@ MenuView = Backbone.View.extend
         "click a#set_home": "set_home"
         "click a#set_all": "set_all"
         "click a#set_done": "set_done"
+        "click a#clean_home": "clean_home"
 
     set_home: (event) ->
         event.preventDefault()
@@ -202,6 +203,12 @@ MenuView = Backbone.View.extend
         event.preventDefault()
         console.log "set_done"
         todo_list_view.collection.url = "/done-todo/"
+        todo_list_view.render()
+
+    clean_home: (event) ->
+        event.preventDefault()
+        console.log "clean_home"
+        $.post fragments.clean_home_url
         todo_list_view.render()
 
     initialize: ->

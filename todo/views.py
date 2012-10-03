@@ -43,7 +43,8 @@ def clean_home(request):
 
     for i in home_page_todos:
         if not i.done:
-            return
+            continue
+
         i.position = None
         print "caca"
         i.save()
