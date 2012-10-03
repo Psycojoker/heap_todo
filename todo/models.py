@@ -1,6 +1,8 @@
 from datetime import datetime
 from django.db import models
 
+from utils import clean_10_first_todo_if_they_are_done
+
 class Todo(models.Model):
     title = models.CharField(max_length=255)
     done = models.BooleanField(default=False)
@@ -11,25 +13,27 @@ class Todo(models.Model):
 
     @classmethod
     def get_home_page(klass):
-        home_page = klass.objects.filter(position__isnull=False)[:10]
-        if all(map(lambda x: x.done, home_page)):
-            for i in home_page:
-                i.position = None
-                print "caca"
-                i.save()
+        clean_10_first_todo_if_they_are_done()
 
         # can't slice here, otherwise I would broke djangbone
         # I slice in the backbone view at the good time
+        # TODO rtfm djangbone pagination stuff
         return klass.objects.filter(position__isnull=False)
 
     def save(self, *args, **kwargs):
-        if Todo.objects.filter(id=self.id):
-            in_db_todo = Todo.objects.get(id=self.id)
-            if not in_db_todo.done and self.done:
-                self.done_datetime = datetime.now()
-            elif in_db_todo.done and not self.done:
-                self.done_datetime = None
+        self.set_done_datetime_of_current_todo()
         return super(Todo, self).save(*args, **kwargs)
+
+    def set_done_datetime_of_current_todo(self):
+        I_am_in_db = Todo.objects.filter(id=self.id)
+        if not I_am_in_db:
+            return
+
+        in_db_todo = Todo.objects.get(id=self.id)
+        if not in_db_todo.done and self.done:
+            self.done_datetime = datetime.now()
+        elif in_db_todo.done and not self.done:
+            self.done_datetime = None
 
     class Meta:
         ordering = ["position"]
