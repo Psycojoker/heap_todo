@@ -46,6 +46,7 @@ li.editable span.non-edit {
 span.buttons a {
     float: right;
     margin-right: 10px;
+    font-size: small;
 }
 
 a.edit.hide {

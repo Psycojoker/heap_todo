@@ -47,6 +47,7 @@ TodoView = Backbone.View.extend
         "click a.edit": "modify_todo"
         "click a.promote": "promote_todo"
         "click a.delay": "delay_todo"
+        "click a.redo": "redo_todo"
         "click span.non-edit": "toggle_done"
         "keypress input": "validate_modification"
         "blur input": "end_modification"
@@ -75,6 +76,14 @@ TodoView = Backbone.View.extend
         console.log "delay_todo"
         this.model.attributes.position = -2
         this.model.save()
+
+    redo_todo: (event) ->
+        event.preventDefault()
+        console.log "redo_todo"
+        this.model.attributes.done = true
+        this.model.save()
+        new_todo = new TodoModel({title: this.model.attributes.title})
+        new_todo.save()
 
     toggle_done: ->
         console.log "toggle_done"

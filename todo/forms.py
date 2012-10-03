@@ -5,13 +5,18 @@ from models import Todo
 
 class AddTodoForm(forms.Form):
     title = forms.CharField()
+    position = forms.IntegerField(required=False)
 
     def save(self, *args, **kwargs):
         if not self.is_valid():
             raise Exception
 
-        max_position = Todo.objects.all().aggregate(Max("position"))["position__max"]
-        return Todo.objects.create(title=self.cleaned_data["title"], position=max_position + 1 if max_position else 1, page=1)
+        position = Todo.objects.all().aggregate(Max("position"))["position__max"]
+        position = position + 1 if position else 1
+        if self.cleaned_data["position"] == -1:
+            position = Todo.objects.all().aggregate(Min("position"))["position__min"] 
+            position = position -1 if position else 1
+        return Todo.objects.create(title=self.cleaned_data["title"], position=position, page=1)
 
 
 class EditTodoForm(forms.ModelForm):
